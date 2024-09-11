@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include Bootstrap CSS in the head -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Budgets</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center text-primary">Budgets</h1>
+        <div class="text-center mb-4">
+            <a href="{% url 'add_budget' %}" class="btn btn-success">Add New Budget</a>
+        </div>
+        <div class="list-group">
+            {% for budget in budgets %}
+                <a href="{% url 'budget_detail' month=budget.month %}" class="list-group-item list-group-item-action">
+                    {{ budget.month|date:"F Y" }} - ${{ budget.amount }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
